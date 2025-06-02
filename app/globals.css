@@ -1,0 +1,364 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    --background: 248 250 252;
+    --foreground: 15 23 42;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+    --primary: 59 130 246;
+    --primary-foreground: 248 250 252;
+    --secondary: 241 245 249;
+    --secondary-foreground: 15 23 42;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 241 245 249;
+    --accent-foreground: 15 23 42;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 59 130 246;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
+    --primary: 59 130 246;
+    --primary-foreground: 15 23 42;
+    --secondary: 51 65 85;
+    --secondary-foreground: 248 250 252;
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
+    --accent: 51 65 85;
+    --accent-foreground: 248 250 252;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 59 130 246;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* 3D CSS Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(5deg);
+  }
+}
+
+@keyframes rotate3d {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes pulse3d {
+  0%,
+  100% {
+    transform: scale(1) rotateZ(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotateZ(180deg);
+  }
+}
+
+/* Floating Shapes */
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.08), rgba(6, 182, 212, 0.08));
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 80px;
+  height: 80px;
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.shape-4 {
+  width: 120px;
+  height: 120px;
+  bottom: 20%;
+  right: 20%;
+  animation-delay: 1s;
+}
+
+.shape-5 {
+  width: 90px;
+  height: 90px;
+  top: 50%;
+  left: 50%;
+  animation-delay: 3s;
+}
+
+/* 3D Geometric Background */
+.geometric-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.cube {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, rgba(59, 130, 246, 0.08), rgba(6, 182, 212, 0.08));
+  animation: rotate3d 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.cube-1 {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.cube-2 {
+  top: 60%;
+  right: 20%;
+  animation-delay: 7s;
+}
+
+.cube-3 {
+  bottom: 20%;
+  left: 60%;
+  animation-delay: 14s;
+}
+
+.sphere {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.12), rgba(6, 182, 212, 0.08));
+  animation: pulse3d 8s ease-in-out infinite;
+}
+
+.sphere-1 {
+  width: 80px;
+  height: 80px;
+  top: 40%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.sphere-2 {
+  width: 120px;
+  height: 120px;
+  bottom: 40%;
+  left: 10%;
+  animation-delay: 5s;
+}
+
+/* 3D Effects for Elements */
+.avatar-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.avatar-3d:hover {
+  transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+}
+
+.hero-text {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.hero-text:hover {
+  transform: perspective(1000px) rotateX(5deg);
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(10px);
+}
+
+.project-card-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg) translateZ(20px) scale(1.02);
+}
+
+.achievement-card-3d:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(5deg) translateZ(15px);
+}
+
+.button-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+}
+
+.button-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) translateZ(5px);
+}
+
+.icon-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.icon-3d:hover {
+  transform: perspective(1000px) rotateY(15deg) rotateX(10deg);
+}
+
+.tag-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.tag-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) translateZ(5px);
+}
+
+.quote-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.quote-3d:hover {
+  transform: perspective(1000px) rotateX(2deg) translateZ(10px);
+}
+
+.skill-bar-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.skill-bar-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) translateZ(3px);
+}
+
+.skill-progress {
+  transform-style: preserve-3d;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+}
+
+.input-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+}
+
+.input-3d:focus {
+  transform: perspective(1000px) translateZ(3px);
+}
+
+.social-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.social-3d:hover {
+  transform: perspective(1000px) rotateY(15deg) rotateX(10deg) translateZ(10px);
+}
+
+/* Remove or override any custom scrollbar styles */
+::-webkit-scrollbar,
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-track {
+  all: unset;
+}
+
+/* Custom blue scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3498db; /* Replace with your preferred blue */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a2233; /* Replace with your page background blue */
+}
+
+/* For Firefox */
+html {
+  scrollbar-color: #3498db #1a2233;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(51, 65, 85, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* Set the background color for the entire page and html */
+html,
+body {
+  background: #1a2233; /* Replace with your main blue background */
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Blue scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #3498db; /* Your blue accent */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #1a2233; /* Match your main background */
+}
+/* Firefox */
+html {
+  scrollbar-color: #3498db #1a2233;
+}
